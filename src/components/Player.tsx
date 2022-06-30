@@ -3,8 +3,7 @@ import {
   DiscordLogo,
   FileArrowDown,
   Image,
-  Lightning,
-  CircleNotch
+  Lightning
 } from 'phosphor-react'
 import { DefaultUi, Player, Youtube } from '@vime/react'
 import { gql, useQuery } from '@apollo/client'

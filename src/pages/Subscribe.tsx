@@ -61,7 +61,7 @@ export default function Subscribe() {
             </p>
           </div>
 
-          <div className="p-8 bg-gray-700 border border-gray-500 rounded relative md:static">
+          <div className="p-8 bg-gray-700 border border-gray-500 rounded md:relative">
             <strong className="text-2xl mb-6 block">
               Inscreva-se gratuitamente
             </strong>
