@@ -9,7 +9,7 @@ export default function Footer() {
       </div>
       <div className="flex gap-2 py-5 sm:py-0">
         <span>Desenvolvido por </span>
-        <a href="https://github.com/jovimoura" target="blank">
+        <a className='hover:text-blue-500 transition-colors' href="https://github.com/jovimoura" target="blank">
           João Victor Moura
         </a>
       </div>
