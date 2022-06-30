@@ -3,6 +3,8 @@ import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Logo from '../components/Logo'
 import Footer from '../components/Footer'
+import imgMock from '../assets/images/group7735.png'
+import reactLogo from '../assets/images/react-icon.png'
 
 const CREATE_SUBSCRIBER_MUTATION = gql`
   mutation CreateSubscribe($name: String!, $email: String!) {
@@ -38,7 +40,7 @@ export default function Subscribe() {
     <>
       <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
         <img
-          src="/src/assets/images/react-icon.png"
+          src={reactLogo}
           className="mt-10 absolute"
           alt=""
         />
@@ -92,7 +94,7 @@ export default function Subscribe() {
           </div>
         </div>
 
-        <img src="/src/assets/images/group7735.png" className="mt-10" alt="" />
+        <img src={imgMock} className="mt-10" alt="mock" />
       </div>
       <Footer />
     </>
