@@ -8,6 +8,7 @@ interface LessonProps {
   slug: string
   availableAt: Date
   type: 'live' | 'class'
+  
 }
 
 export default function Lesson({

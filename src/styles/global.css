@@ -6,3 +6,22 @@ body {
   @apply bg-gray-900 text-gray-100;
   -webkit-font-smoothing: antialiased;
 }
+
+@layer utilities {
+  ::-webkit-scrollbar {
+    @apply hidden md:block w-1;
+  }
+
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-900 rounded;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-green-900 rounded;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-green-700;
+  }
+}

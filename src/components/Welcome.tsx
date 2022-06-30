@@ -17,6 +17,10 @@ export function Welcome() {
         <p className="text-base md:text-lg text-gray-200 z-10 cursor-default pointer-events-none text-center">
           Comece a evolução selecionando alguma aula ao lado!
         </p>
+
+        <p className="text-base md:text-lg text-gray-200 z-10 cursor-default pointer-events-none text-center">
+          Lembrando que esse projeto é apenas um clone da plataforma de ensino da Rocketseat, ou seja, não se trata do evento de programação com aulas da Rocketseat.
+        </p>
       </div>
 
       <Footer />

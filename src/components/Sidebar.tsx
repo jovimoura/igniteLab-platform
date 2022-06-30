@@ -25,11 +25,17 @@ interface GetLessonsQueryResponse {
   }[]
 }
 
-export default function Sidebar() {
+interface SidebarProps {
+  hideMenu: boolean
+}
+
+export default function Sidebar({ hideMenu }: SidebarProps) {
   const { data } = useQuery<GetLessonsQueryResponse>(GET_LESSONS_QUERY)
 
   return (
-    <aside className="sidebar w-[348px] bg-gray-700 p-6 border-l border-gray-600">
+    <aside className={`flex-1 h-full overflow-y-scroll md:flex-none md:w-[348px] bg-gray-700 p-6 border-l border-gray-600  ${
+      hideMenu ? 'hidden md:block' : 'block'
+    }`}>
       <span className="font-bold text-2xl pb-6 mb-6 border-b border-gray-500 block">
         Cronograma de aulas
       </span>

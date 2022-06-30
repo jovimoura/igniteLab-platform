@@ -3,7 +3,8 @@ import {
   DiscordLogo,
   FileArrowDown,
   Image,
-  Lightning
+  Lightning,
+  CircleNotch
 } from 'phosphor-react'
 import { DefaultUi, Player, Youtube } from '@vime/react'
 import { gql, useQuery } from '@apollo/client'
@@ -44,19 +45,36 @@ interface GetLessonBySlugResponse {
 }
 
 export default function PlayerComponent({ lessonSlug }: PlayerProps) {
-  const { data } = useQuery<GetLessonBySlugResponse>(GET_LESSON_BY_SLUG_QUERY, {
+  const { data, error } = useQuery<GetLessonBySlugResponse>(GET_LESSON_BY_SLUG_QUERY, {
     variables: {
       slug: lessonSlug
     }
   })
 
-  if (!data) {
+  if (error) {
     return (
-      <div className="flex-1">
-        <p>Carregando...</p>
+      <div className="flex items-center justify-center flex-1">
+        <p className="text-gray-200">Falha ao carregar, verifique sua internet, ou troque de aula!</p>
       </div>
     )
   }
+
+  if (!data) {
+    return (
+      <div className="flex items-center justify-center flex-1">
+        <p className="text-gray-200">Carregando...</p>
+      </div>
+    )
+  }
+
+  if (!data.lesson) {
+    return (
+      <div className="flex items-center justify-center flex-1">
+        <p className="text-gray-200">Aula não encontrada, verifique a URL, ou selecione uma aula no menu lateral!</p>
+      </div>
+    )
+  }
+  
 
   return (
     <div className="flex-1">
@@ -70,7 +88,7 @@ export default function PlayerComponent({ lessonSlug }: PlayerProps) {
       </div>
 
       <div className="p-8 max-w-[1100px] mx-auto">
-        <div className="flex items-start gap-16">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-16">
           <div className="flex-1">
             <h1 className="text-2xl font-bold">{data.lesson.title}</h1>
 
@@ -108,7 +126,7 @@ export default function PlayerComponent({ lessonSlug }: PlayerProps) {
             </a>
 
             <a
-              href=""
+              href="#"
               className="p-4 text-sm border border-blue-500 text-blue-500 flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-blue-500 hover:text-gray-900 transition-colors"
             >
               <Lightning size={24} />
@@ -117,10 +135,10 @@ export default function PlayerComponent({ lessonSlug }: PlayerProps) {
           </div>
         </div>
 
-        <div className="gap-8 mt-20 grid grid-cols-2">
+        <div className="gap-8 mt-20 grid xl:grid-cols-2">
           <a
-            href=""
-            className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors"
+            href="#"
+            className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-2 md:gap-6 hover:bg-gray-600 transition-colors"
           >
             <div className="bg-green-700 h-full p-6 flex items-center">
               <FileArrowDown size={40} />
@@ -139,7 +157,7 @@ export default function PlayerComponent({ lessonSlug }: PlayerProps) {
 
           <a
             href=""
-            className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors"
+            className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-2 md:gap-6 hover:bg-gray-600 transition-colors"
           >
             <div className="bg-green-700 h-full p-6 flex items-center">
               <Image size={40} />
